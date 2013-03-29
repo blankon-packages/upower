@@ -1,0 +1,2 @@
+# Debian patches for upower
+no_deprecation_define.patch
