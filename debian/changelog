@@ -1,3 +1,24 @@
+upower (0.99.0-1blankon1) tambora; urgency=low
+
+  * New upstream release.
+
+ -- Aris Febrianto <ariesfebrianto@gmail.com>  Sun, 23 Mar 2014 21:53:14 +0700
+
+upower (0.99.0-1) experimental; urgency=medium
+
+  * Team upload.
+  * Imported Upstream version 0.99.0
+  * Rename package for new SONAME (1->2)
+  * Update symbols
+  * Drop debian/patches/00git_clamp_percentage.patch, merged upstream.
+  * Drop debian/patches/no_deprecation_define.patch
+    - deprecated features no longer exists at all.
+  * Drop debian/patches/always_use_pm-utils_backend.patch
+    - new upstream now requires logind support
+  * upower no longer install polkit files
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 16 Feb 2014 21:19:45 +0100
+
 upower (0.9.23-2blankon1) suroboyo; urgency=low
 
   * Revert depends libimobiledevice-dev to 1.1.5. 
