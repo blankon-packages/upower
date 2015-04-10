@@ -1,8 +1,7 @@
 Source: upower
 Section: admin
 Priority: optional
-Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
-XSBC-Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+Maintainer: BlankOn Developers <BlankOn-Dev@googlegroups.com>
 Uploaders: Michael Biebl <biebl@debian.org>, Martin Pitt <mpitt@debian.org>
 Build-Depends: debhelper (>= 9),
  autotools-dev,
@@ -14,15 +13,14 @@ Build-Depends: debhelper (>= 9),
  libdbus-glib-1-dev (>= 0.76),
  libdbus-1-dev (>= 1.0),
  libglib2.0-dev (>= 2.36),
- libgudev-1.0-dev (>= 147),
- udev,
-# libkvm-dev,
- libpolkit-gobject-1-dev (>= 0.97),
- libusb-1.0-0-dev (>= 1.0.0),
- libimobiledevice-dev (>= 0.9.7),
+ libgudev-1.0-dev (>= 147) [linux-any],
+ udev [linux-any],
+ libkvm-dev [kfreebsd-any],
+ libusb-1.0-0-dev (>= 1.0.0) [linux-any],
+ libimobiledevice-dev (>= 0.9.7) [linux-any],
  libgirepository1.0-dev (>= 0.10.7-1~),
  gobject-introspection (>= 0.9.12-4~),
-Standards-Version: 3.9.4
+Standards-Version: 3.9.6
 Vcs-Git: git://git.debian.org/git/pkg-utopia/upower.git
 Vcs-Browser: http://git.debian.org/?p=pkg-utopia/upower.git;a=summary
 Homepage: http://upower.freedesktop.org/
@@ -34,9 +32,8 @@ Multi-Arch: foreign
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends},
  ${misc:Depends},
- udev,
+ udev [linux-any],
  dbus,
- pm-utils | systemd | systemd-services
 Recommends: policykit-1
 Description: abstraction for power management
  upower provides an interface to enumerate power sources on the system
@@ -55,12 +52,13 @@ Description: abstraction for power management - documentation
  org.freedesktop.UPower service on the system message bus. Some
  operations (such as suspending the system) are restricted using PolicyKit.
 
-Package: libupower-glib2
+Package: libupower-glib3
 Architecture: any
 Multi-Arch: same
 Section: libs
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: upower (>> 0.99)
 Description: abstraction for power management - shared library
  upower provides an interface to enumerate power sources on the system
  and control system-wide power management. Any application can access the
@@ -76,7 +74,7 @@ Depends: ${shlibs:Depends},
  ${misc:Depends},
  libglib2.0-dev,
  libdbus-glib-1-dev (>= 0.76),
- libupower-glib2 (= ${binary:Version}),
+ libupower-glib3 (= ${binary:Version}),
  gir1.2-upowerglib-1.0 (= ${binary:Version})
 Description: abstraction for power management - development files
  upower provides an interface to enumerate power sources on the system
